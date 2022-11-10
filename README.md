@@ -116,24 +116,10 @@ ls -la
 ### EC2 を起動するユーザーデータに GitHub からソースコードを取得して Spring を起動するスクリプトを記述
 
 ```
+#!/bin/bash
 sudo yum update
 sudo yum install git -y
 sudo yum install java-11-amazon-corretto -y
-git clone https://github.com/areph/miushinj-training-java-spring-sample.git
-cd miushinj-training-java-spring-sample/aws-sample
-sh mvnw spring-boot:run
-```
-
-
-Temp
-```
-sudo yum update
-sudo yum install git
-sudo yum install java-11-amazon-corretto -y
-curl -s "https://get.sdkman.io" | bash
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk install springboot
-spring init --build=maven --java-version=11 --dependencies=web aws-sample
 git clone https://github.com/areph/miushinj-training-java-spring-sample.git
 cd miushinj-training-java-spring-sample/aws-sample
 sh mvnw spring-boot:run
