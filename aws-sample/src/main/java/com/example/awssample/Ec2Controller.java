@@ -11,8 +11,6 @@ public class Ec2Controller {
 
   @RequestMapping("/ec2")
   String ec2(Model model) {
-    String ec2Id = getMetadata();
-    System.out.println(ec2Id);
     model.addAttribute("ec2id", getMetadata());
     return "ec2";
   }
@@ -22,10 +20,7 @@ public class Ec2Controller {
     try {
       URL url = new URL("http://169.254.169.254/latest/meta-data/instance-id");
       InputStream inputStream = url.openStream();
-      byte[] b = new byte[8];
-      while (inputStream.read(b) != -1) {
-        result += new String(b);
-      }
+      result = new String(inputStream.readAllBytes());
     } catch (Exception e) {
       e.printStackTrace();
     }
