@@ -111,7 +111,7 @@ ls -la
 
 ----
 
-## (3)Spring Web Application を EC2 上にデプロイ＆ロードバランサー&オートスケーリング構成
+## (3)Spring Web Application を EC2 上にデプロイ
 
 ### EC2 を起動するユーザーデータに GitHub からソースコードを取得して Spring を起動するスクリプトを記述
 
@@ -124,3 +124,9 @@ git clone https://github.com/areph/miushinj-training-java-spring-sample.git
 cd miushinj-training-java-spring-sample/aws-sample
 sh mvnw spring-boot:run
 ```
+
+`http://${EC2 のパブリックIPアドレス}/ec2:8080` へアクセス
+
+## (4)Spring Web Application の可用性を高めるためにロードバランサー&オートスケーリング構成
+
+- すでに AutoScaling が設定されているので、希望する容量を 4 に設定すると EC2 が 4 台起動する
